@@ -1,1 +1,79 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+html, body {
+  min-height: 100%;
+  height: 100%;
+  margin: 0;
+  background: #f8f9fa;
+}
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.navbar {
+  justify-content: space-between;
+}
+
+.footer {
+  // margin-top: 5%;
+  padding: 45px;
+  // background: #546e7a;
+  background: #01579b;
+}
+
+.footer a {
+  color:#fff;
+}
+
+.container {
+  margin-top: 25px;
+  margin-bottom: 45px;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+.mat-icon {
+  vertical-align: middle;
+}
+
+@media(min-width: 600px) {
+  mat-card {;
+    width: 45%;
+  }
+}
+
+.card + .card {
+  margin-top: 20px;
+}
+
+.icon-small { font-size: 1.45em; vertical-align: sub!important }
+
+
+.cal-open {
+  background-color: #ddd!important;
+}
+
+.alert {
+  position:fixed;
+  bottom:0;
+  left: 0;
+  width: 100vw;
+  padding: 15px 0;
+  text-align:center;
+  color: #fff;
+}
+
+.alert-success {
+  background-color: #00C957;
+}
+
+.alert-danger {
+  background-color: red;
+}

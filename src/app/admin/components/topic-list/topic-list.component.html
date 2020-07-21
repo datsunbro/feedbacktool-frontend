@@ -1,0 +1,42 @@
+<div class="container" fxLayoutGap="2%" fxLayout="column" fxLayoutAlign="center center" *ngIf="allTopics && allTopics.length > 0; else noTopicsAvailable">
+  <h1>Alle Themen</h1>
+  <mat-card fxFlex.gt-md="50%" fxFlex.lt-md="100%" *ngFor="let topic of allTopics">
+    <mat-card-header>
+      <mat-card-title><b>{{ topic.title }}</b></mat-card-title>
+      <mat-card-subtitle>Feedback möglich bis <b>{{ topic.feedbackDeadline | date: 'short' }}</b></mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div fxLayout="column" fxFlex="100%">
+        <div fxLayout="row" fxLayoutAlign="center">
+          <div fxLayout="column" fxFlex="95%" style="font-size: 1.1em; text-align: justify">
+            <p>{{ topic.description }}</p>
+          </div>
+        </div>
+        <div fxLayout.gt-md="row" fxLayout.lt-md="column" fxLayoutAlign="space-between" fxLayoutGap.lt-md="2%" fxFlex="100%" fxLayoutGap.gt-md="2.5%">
+          <button mat-raised-button fxFlex.lt-md="100%" color="secondary" routerLink="/topic/{{ topic._id }}/feedback-preview">Feedback ansehen</button>
+          <button mat-raised-button fxFlex.lt-md="100%" color="primary" routerLink="/topic/{{ topic._id }}/edit">Thema bearbeiten</button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<ng-template #noTopicsAvailable>
+  <div class="container" fxLayoutAlign="center">
+    <mat-card fxFlex.gt-md="50%" fxFlex.lt-md="100%">
+      <mat-card-header fxLayoutAlign="center">
+        <mat-card-title>Aktuell sind keine Feedbackthemen verfügbar</mat-card-title>
+      </mat-card-header>
+      <mat-card-content fxLayoutAlign="center">
+        <div fxLayout="column">
+          <div fxLayout="row" fxLayoutAlign="center">
+            <div fxLayout="column" fxFlex="100%" style="font-size: 1.1em; text-align: justify">
+              <p>Sobald wieder ein Thema für Feedback bereitsteht, erhaltet Ihr eine E-Mail.</p>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</ng-template>
+
