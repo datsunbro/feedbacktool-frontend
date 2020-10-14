@@ -1,17 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FeedbackService } from './feedback.service';
+import { AuthService } from './auth.service';
 import { HttpClientModule } from '@angular/common/http';
 
-describe('FeedbackService', () => {
+describe('AuthService', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [
-      HttpClientModule,
-    ]
+    imports: [ HttpClientModule ]
   }));
 
   it('should be created', () => {
-    const service: FeedbackService = TestBed.get(FeedbackService);
+    const service: AuthService = TestBed.get(AuthService);
     expect(service).toBeTruthy();
   });
 });

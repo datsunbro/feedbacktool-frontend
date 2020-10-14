@@ -15,16 +15,23 @@ import {
   MatCheckboxModule,
   MatDatepickerModule,
   MatFormFieldModule,
-  MatInputModule, MatListModule, MatNativeDateModule, MatSidenavModule
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatNativeDateModule,
+  MatSidenavModule
 } from '@angular/material';
 import { CreateNewFeedbackComponent } from './general/components/create-new-feedback/create-new-feedback.component';
-import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CreateNewTopicComponent } from './admin/components/create-new-topic/create-new-topic.component';
 import { AdminViewComponent } from './layout/admin-view/admin-view.component';
 import { TopicListComponent } from './admin/components/topic-list/topic-list.component';
 import { FeedbackPreviewComponent } from './admin/components/feedback-preview/feedback-preview.component';
 import { EditTopicComponent } from './admin/components/edit-topic/edit-topic.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -55,10 +62,18 @@ import { EditTopicComponent } from './admin/components/edit-topic/edit-topic.com
     MatDatepickerModule,
     MatNativeDateModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatIconModule
   ],
   providers: [
-    MatDatepickerModule
+    MatDatepickerModule,
+    AuthService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

@@ -30,7 +30,6 @@ export class CreateNewFeedbackComponent implements OnInit {
       topicId
     };
     this.feedbackService.createNewFeedback(newFeedback).subscribe( result => {
-      console.log(result);
       this.feedbackSent = true;
     });
   }

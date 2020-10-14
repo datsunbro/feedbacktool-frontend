@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TopicService } from '../../../admin/services/topic.service';
 
-
-
 @Component({
   selector: 'app-current-topics',
   templateUrl: './current-topics.component.html',

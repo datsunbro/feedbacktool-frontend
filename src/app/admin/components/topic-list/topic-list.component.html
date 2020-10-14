@@ -3,7 +3,10 @@
   <mat-card fxFlex.gt-md="50%" fxFlex.lt-md="100%" *ngFor="let topic of allTopics">
     <mat-card-header>
       <mat-card-title><b>{{ topic.title }}</b></mat-card-title>
-      <mat-card-subtitle>Feedback möglich bis <b>{{ topic.feedbackDeadline | date: 'short' }}</b></mat-card-subtitle>
+      <mat-card-subtitle>
+        Feedback möglich bis <b>{{ topic.feedbackDeadline | date: 'short' }}</b>
+        <mat-icon *ngIf="topic.openForFeedback; else notOpenForFeedback" aria-hidden="false" style="font-size: 1.25em; color: green;margin-left: 10px;">lock_open</mat-icon>
+      </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <div fxLayout="column" fxFlex="100%">
@@ -14,6 +17,7 @@
         </div>
         <div fxLayout.gt-md="row" fxLayout.lt-md="column" fxLayoutAlign="space-between" fxLayoutGap.lt-md="2%" fxFlex="100%" fxLayoutGap.gt-md="2.5%">
           <button mat-raised-button fxFlex.lt-md="100%" color="secondary" routerLink="/topic/{{ topic._id }}/feedback-preview">Feedback ansehen</button>
+          <button mat-raised-button class="alert-danger" fxFlex.lt-md="100%" style="color:#ffffff" (click)="deleteTopic(topic._id)">Thema löschen</button>
           <button mat-raised-button fxFlex.lt-md="100%" color="primary" routerLink="/topic/{{ topic._id }}/edit">Thema bearbeiten</button>
         </div>
       </div>
@@ -31,7 +35,7 @@
         <div fxLayout="column">
           <div fxLayout="row" fxLayoutAlign="center">
             <div fxLayout="column" fxFlex="100%" style="font-size: 1.1em; text-align: justify">
-              <p>Sobald wieder ein Thema für Feedback bereitsteht, erhaltet Ihr eine E-Mail.</p>
+              <p>Sobald wieder ein Thema für Feedback bereitsteht, erhaltet Ihr eine E-Mail. lol</p>
             </div>
           </div>
         </div>
@@ -40,3 +44,7 @@
   </div>
 </ng-template>
 
+<ng-template #notOpenForFeedback>
+<mat-icon aria-hidden="false" style="font-size: 1.25em; color: red;margin-left: 10px;">lock</mat-icon>
+</ng-template>
+<flash-messages></flash-messages>

@@ -1,5 +1,5 @@
 <div class="container" fxLayoutAlign="center">
-  <mat-card fxFlex.gt-md="50%" fxFlex.lt-md="100%" *ngIf="!feedbackSent; else successMessage">
+  <mat-card fxFlex.gt-md="50%" fxFlex.lt-md="100%" *ngIf="currentTopic && !feedbackSent; else successMessage">
     <mat-card-header>
       <mat-card-title>Feedback zum Thema:<br><br><b>{{ currentTopic.title }}</b></mat-card-title>
       <mat-card-subtitle>Feedback möglich bis <b>{{ currentTopic.feedbackDeadline | date:'short' }}</b></mat-card-subtitle>
@@ -30,8 +30,9 @@
   <mat-card-content>
     <div fxLayout="column" fxFlex="100%">
       <div fxLayout="row">
-        <div fxLayout="row" fxFlex="100%" style="font-size: 1.1em;" fxLayoutAlign="center">
+        <div fxLayout="column" fxFlex="100%" style="font-size: 1.1em;" fxLayoutAlign="center">
           <h1>Vielen Dank für dein Feedback!</h1>
+          <button mat-raised-button fxFlex.lt-md="100%" routerLink="/">Feedback zu einem anderen Thema abgeben</button>
         </div>
       </div>
     </div>

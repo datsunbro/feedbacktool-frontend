@@ -1,1 +1,52 @@
-<p>edit-topic works!</p>
+<div class="container" fxLayoutAlign="center">
+  <mat-card fxFlex.gt-md="50%" fxFlex.lt-md="100%" *ngIf="topic && !topicUpdated; else successMessage">
+    <mat-card-header>
+      <mat-card-title>Thema "{{ topic.title }}" bearbeiten</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div fxLayout="column" fxFlex="100%">
+        <div fxLayout="row">
+          <div  fxFlex="100%" style="font-size: 1.1em;" fxLayoutAlign="center">
+            <form #form="ngForm" (ngSubmit)="updateTopic(form.value)" class="example-form" fxFlex="96%" style="margin-bottom: 20px;" fxLayout="column">
+              <mat-form-field fxFlex="100%">
+                <mat-label>Thema</mat-label>
+                <textarea matInput #feedbackName name="title" [ngModel]="topic.title" maxlength="500" placeholder="z. B. Projekt XYZ"></textarea>
+              </mat-form-field>
+              <mat-form-field fxFlex="100%">
+                <mat-label>Themenbeschreibung</mat-label>
+                <textarea matInput #feedbackDescription name="description" [ngModel]="topic.description" maxlength="500" placeholder="z. B. Projekt XYZ steht kurz vor dem Abschluss, das wollen wir wissen..."></textarea>
+                <mat-hint align="end">{{feedbackDescription.value.length}} / 500</mat-hint>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Feedback Deadline</mat-label>
+                <!-- #docregion toggle -->
+                <input matInput [min]="minDate" [matDatepicker]="picker" name="feedbackDeadline" [ngModel]="topic.feedbackDeadline">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <!-- #enddocregion toggle -->
+              </mat-form-field>
+              <mat-checkbox #openForFeedback name="openForFeedback" [ngModel]="topic.openForFeedback">Thema für Feedback freigeben?</mat-checkbox>
+              <div fxLayout.gt-md="row" fxLayout.lt-md="column" fxLayoutAlign="space-between" style="margin-top: 4%;">
+                <button mat-raised-button fxFlex.lt-md="100%" routerLink="/topics">Abbrechen</button>
+                <button type="submit" mat-raised-button fxFlex.lt-md="100%" color="primary" [disabled]="!form.valid">Änderungen speichern</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<ng-template #successMessage>
+  <mat-card-content>
+    <div fxLayout="column" fxFlex="100%">
+      <div fxLayout="row">
+        <div fxLayout="row" fxFlex="100%" style="font-size: 1.1em;" fxLayoutAlign="center">
+          <h1>Thema erfolgreich geändert</h1>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</ng-template>
+<flash-messages></flash-messages>

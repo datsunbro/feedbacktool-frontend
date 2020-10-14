@@ -14,6 +14,10 @@ export class TopicService {
 
   constructor(private http: HttpClient) { }
 
+  getAllTopics() {
+    return this.http.get(`${this.apiUrl}/topics`);
+  }
+
   getLatestTopics() {
     return this.http.get(`${this.apiUrl}/topics/latest`);
   }
@@ -24,5 +28,13 @@ export class TopicService {
 
   createNewTopic(topic: any) {
     return this.http.post(`${this.apiUrl}/topics`, topic);
+  }
+
+  updateTopicById(topicId: string, updatedTopic: any) {
+    return this.http.patch(`${this.apiUrl}/topics/${topicId}`, updatedTopic);
+  }
+
+  deleteTopicById(topicId: string) {
+    return this.http.delete(`${this.apiUrl}/topics/${topicId}`);
   }
 }

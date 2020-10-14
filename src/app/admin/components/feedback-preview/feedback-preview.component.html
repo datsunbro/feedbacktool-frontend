@@ -1,5 +1,5 @@
-<div class="container" fxLayoutGap="2%" fxLayout="column" fxLayoutAlign="center center" *ngIf="allFeedback && allFeedback.length > 0; else noFeedbackAvailable">
-  <h1>Alle Themen</h1>
+<div class="container" fxLayoutGap="2%" fxLayout="column" fxLayoutAlign="center center" *ngIf="allFeedback && allFeedback.length > 0 && topic; else noFeedbackAvailable">
+  <h1>Feedback zum Thema<br>"{{ topic.title }}"</h1>
   <mat-card fxFlex.gt-md="100%" fxFlex.lt-md="100%" *ngFor="let feedback of allFeedback">
     <mat-card-content>
       <div fxLayout="column">
@@ -23,7 +23,7 @@
         <div fxLayout="column">
           <div fxLayout="row" fxLayoutAlign="center">
             <div fxLayout="column" fxFlex="100%" style="font-size: 1.1em; text-align: justify">
-              <p>Sobald wieder ein Thema für Feedback bereitsteht, erhaltet Ihr eine E-Mail.</p>
+              <p>Sobald Feedback vorhanden ist, findest du es hier.</p>
             </div>
           </div>
         </div>

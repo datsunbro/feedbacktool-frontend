@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CurrentTopicsComponent } from './current-topics.component';
+import { MatCardModule } from '@angular/material/card';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('CurrentTopicsComponent', () => {
   let component: CurrentTopicsComponent;
@@ -8,6 +11,11 @@ describe('CurrentTopicsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        HttpClientModule,
+        MatCardModule,
+        RouterModule.forRoot([])
+      ],
       declarations: [ CurrentTopicsComponent ]
     })
     .compileComponents();

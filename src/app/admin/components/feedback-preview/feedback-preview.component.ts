@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FeedbackService } from '../../../general/services/feedback.service';
 import { ActivatedRoute } from '@angular/router';
+import { TopicService } from '../../services/topic.service';
 
 @Component({
   selector: 'app-feedback-preview',
@@ -8,14 +9,21 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./feedback-preview.component.scss']
 })
 export class FeedbackPreviewComponent implements OnInit {
+  topic;
   allFeedback;
 
-  constructor(private feedbackService: FeedbackService, private route: ActivatedRoute) { }
+  constructor(
+    private feedbackService: FeedbackService,
+    private route: ActivatedRoute,
+    private topicService: TopicService ) { }
 
   ngOnInit() {
     const topicId = this.route.snapshot.paramMap.get('id');
-    this.feedbackService.getAllFeedbackByTopicId(topicId).subscribe( result => {
-      this.allFeedback = result;
+    this.topicService.getTopicById(topicId).subscribe( topicResult => {
+      this.topic = topicResult;
+    });
+    this.feedbackService.getAllFeedbackByTopicId(topicId).subscribe( feedbackResult => {
+      this.allFeedback = feedbackResult;
     });
   }
 

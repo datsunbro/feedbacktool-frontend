@@ -17,8 +17,10 @@ export class CreateNewTopicComponent implements OnInit {
   createTopic(topic: any) {
     const title = topic.title;
     const description = topic.description;
-    const openForFeedback = topic.openForFeedback;
+    const openForFeedback = true ? topic.openForFeedback : false;
     const feedbackDeadline = topic.feedbackDeadline;
+
+    console.log(feedbackDeadline);
 
     const newTopic = {
       title,

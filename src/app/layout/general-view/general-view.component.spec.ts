@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GeneralViewComponent } from './general-view.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FooterComponent } from '../footer/footer.component';
+import { MatNavList } from '@angular/material/list';
 
 describe('GeneralViewComponent', () => {
   let component: GeneralViewComponent;
@@ -8,7 +11,14 @@ describe('GeneralViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GeneralViewComponent ]
+      imports: [
+        RouterTestingModule,
+      ],
+      declarations: [
+        GeneralViewComponent,
+        FooterComponent,
+        MatNavList
+      ]
     })
     .compileComponents();
   }));

@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FeedbackPreviewComponent } from './feedback-preview.component';
+import {MatCardModule} from "@angular/material/card";
+import {RouterModule} from "@angular/router";
+import {HttpClientModule} from "@angular/common/http";
 
 describe('FeedbackPreviewComponent', () => {
   let component: FeedbackPreviewComponent;
@@ -8,6 +11,11 @@ describe('FeedbackPreviewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        HttpClientModule,
+        MatCardModule,
+        RouterModule.forRoot([]),
+      ],
       declarations: [ FeedbackPreviewComponent ]
     })
     .compileComponents();

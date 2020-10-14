@@ -9,6 +9,7 @@ import { AdminViewComponent } from './layout/admin-view/admin-view.component';
 import { TopicListComponent } from './admin/components/topic-list/topic-list.component';
 import { FeedbackPreviewComponent } from './admin/components/feedback-preview/feedback-preview.component';
 import { EditTopicComponent } from './admin/components/edit-topic/edit-topic.component';
+import {AuthGuard} from './auth/auth.guard';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
   },
   {
     path: 'admin', component: AdminViewComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '', component: TopicListComponent
@@ -53,6 +55,7 @@ const routes: Routes = [
   },
   {
     path: 'topics', component: AdminViewComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '', component: TopicListComponent
@@ -61,6 +64,7 @@ const routes: Routes = [
   },
   {
     path: 'topics/new', component: AdminViewComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '', component: CreateNewTopicComponent
@@ -69,6 +73,7 @@ const routes: Routes = [
   },
   {
     path: 'topic/:id/edit', component: AdminViewComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '', component: EditTopicComponent
@@ -77,6 +82,7 @@ const routes: Routes = [
   },
   {
     path: 'topic/:id/feedback-preview', component: AdminViewComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '', component: FeedbackPreviewComponent
