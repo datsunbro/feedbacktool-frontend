@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import {AuthService} from '../../../auth/auth.service';
+import { AuthService } from '../../../auth/auth.service';
+import { Form, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,6 +9,8 @@ import {AuthService} from '../../../auth/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
+  @ViewChild('form', {static: false}) form: NgForm;
 
   showLogin: boolean = true;
   loginError: boolean;

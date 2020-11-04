@@ -1,7 +1,7 @@
 <div class="container" fxLayout="row" fxLayoutGap="1%" fxLayoutAlign="center" style="margin-top: 25px;">
   <mat-card fxLayout="column" fxFlex.gt-md="50" fxFlex.lt-md="100%" *ngIf="showLogin; else passwordReset">
     <mat-card-title>ärzte.de Feedbacktool</mat-card-title>
-    <form #form="ngForm" novalidate (ngSubmit)="login(form.value)" fxLayout="column" fxLayoutAlign="start stretch">
+    <form id="form" #form="ngForm" novalidate (ngSubmit)="login(form.value)" fxLayout="column" fxLayoutAlign="start stretch">
       <div fxLayout.gt-md="row" fxLayout.lt-md="column" fxLayoutAlign.gt-md="start center" fxLayoutGap="2%">
         <mat-form-field fxFlex="100">
           <input matInput placeholder="E-Mail" name="email" type="email" email ngModel required>
@@ -11,13 +11,13 @@
         </mat-form-field>
       </div>
       <div *ngIf="loginError" style="color: red!important;">
-        <p>{{errorMessage}}</p>
+        <p class="error-message">{{errorMessage}}</p>
       </div>
       <div fxLayout.gt-md="row" fxLayout.lt-md="column" fxLayoutAlign.gt-md="space-between center" fxLayoutAlign="start">
         <a (click)="toggleLogin()">Passwort vergessen?</a>
       </div>
       <div fxLayout="row" fxLayoutAlign="end center">
-        <button mat-raised-button color="primary" [disabled]="!form.valid" fxFlex.lt-md="100%">Einloggen</button>
+        <button id="login-button" mat-raised-button color="primary" [disabled]="!form.valid" fxFlex.lt-md="100%">Einloggen</button>
       </div>
     </form>
   </mat-card>
@@ -31,7 +31,7 @@
           </mat-form-field>
         </div>
         <div *ngIf="loginError" style="color: red!important;">
-          <p>{{errorMessage}}</p>
+          <p class="error-message">{{errorMessage}}</p>
         </div>
         <div fxLayout.gt-md="row" fxLayout.lt-md="column" fxLayoutAlign.gt-md="space-between center" fxLayoutGap.lt-md="2%">
           <a (click)="toggleLogin()">Zurück zur Anmeldung</a>
